@@ -1,87 +1,84 @@
 % https://tex.stackexchange.com/questions/59932/reproducing-an-official-letterhead
+
 % Colors
 \usepackage[dvinames]{xcolor}
 \definecolor{UIblue}{RGB}{19,41,75}
 \definecolor{UIorange}{RGB}{232,74,39}
 
+% logo
 %\providecommand\logofile{imark_1867_bw}
 \providecommand\logofile{imark}
 
+% set page geometry
 \usepackage[top=2in,left=1.0in,bottom=0.5in,right=1.0in]{geometry}
 \usepackage{graphicx}
-\usepackage[colorlinks=false,
-            pdfborder={0 0 0},
-            ]{hyperref}
+
+% remove coloring from URLs
+\usepackage[colorlinks=false,pdfborder={0 0 0}]{hyperref}
 
 %\usepackage[absolute,showboxes]{textpos}
 \usepackage[absolute]{textpos}
 \setlength{\TPHorizModule}{\paperwidth}\setlength{\TPVertModule}{\paperheight}
 \usepackage{ifthen}
 
-\usepackage{tikz}
-\usetikzlibrary{calc}
-
-\usepackage[urw-garamond]{mathdesign}
+% Use the Garamond URW font if available
+\IfFileExists{mathdesign.sty}{%
+  \usepackage[urw-garamond]{mathdesign}
+}{}
 \usepackage[T1]{fontenc}
 \linespread{1.10}
 
-%\usepackage[tracking=true]{microtype}
+% use microtype to extend spacing
 \usepackage{microtype}
-% from the manual:
-% the interword space will be increased by 2.5%, the stretch amount will be set to
-% 0.166em, while the shrink amount will be left untouched. I
-%\SetTracking[ spacing = {25*,166, } ]{ encoding = *, shape = sc }{ 25 }
 
 % Remove paragraph indentation
 \parindent0pt
 \setlength{\parskip}{0.8\baselineskip}
 \raggedright%
+
+% change page style to include header/footer
 \pagestyle{empty}
 
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-
-\renewcommand{\footrulewidth}{0pt}
-\fancyfoot{}
-\fancyfoot[C]{%
-    {\fontsize{9}{0}\selectfont\color{UIblue}
-     \textit{telephone} \fromtel\ \textbullet\
-     \textit{web} \fromweb\ \textbullet\
-     \textit{email} \fromemail}
-     \color{black}}
-
-\fancyhead{}
-\fancyhead[L]{%
+% add stuff to the doc
+\AtBeginDocument{%
+    % Top block with logo
     \begin{textblock*}{\textwidth}[0,0](1.0in,0.5in)
+    {
       \color{UIblue}
       \centerline{\fontsize{17}{0.5in}\selectfont\textls[150]{\textsc{University of Illinois}}}
       \setlength{\baselineskip}{0.25in}
       \centerline{\fontsize{13}{0.5in}\selectfont\textls[150]{\textsc{at Urbana-Champaign}}}
       \setlength{\baselineskip}{0.5in}
+    }
       \begin{center}
         \includegraphics[height=0.5in]{\logofile}
       \end{center}
     \end{textblock*}
+    % Inset department address
     \begin{textblock*}{4.0in}(1.0in,1.2in)
-        \fontsize{9}{10.8}\selectfont
+        {\fontsize{9}{10.8}\selectfont
         \color{UIblue}
-        \fromdept
+        \fromdept%
+        }
     \end{textblock*}
-  }
-\renewcommand{\headrulewidth}{0pt}
-
-
-\AtBeginDocument{
-    % Text lines should be less than 6in long
+    % footer
+    \begin{textblock*}{\paperwidth}[0,1](0.0in,10.5in)
+      \centering
+    {\fontsize{9}{0}\selectfont\color{UIblue}
+     \textit{telephone} \fromtel\ \textbullet\
+     \textit{web} \fromweb\ \textbullet\
+     \textit{email} \fromemail}
+     \color{black}
+    \end{textblock*}
     \newgeometry{top=2in,left=1.0in,bottom=1.2in,right=1.0in}
-    }
+  }
 
-\AtEndDocument{
+% add closing to end of the document, if sig is available
+\AtEndDocument{%
     \par\vspace{2ex}
     \closing,
 
     \ifthenelse{\equal{\signaturefile}{}}{\bigskip\bigskip}{\includegraphics[width=1.2in]{\signaturefile}\\[-0.2\baselineskip]}
 
     \fromname
-  }
+}
