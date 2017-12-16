@@ -6,17 +6,23 @@ This is an attempt to reproduce the Illinois letterhead in latex.  This will be 
 
 First install the Garamond URW fonts:
 - For the garamond font, first download this script
-  - $ wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+```  
+wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+```  
 - Then install a script (!)
-  - $ sudo texlua install-getnonfreefonts
+```    
+sudo texlua install-getnonfreefonts
+```    
 - Then install the font
-  - $ sudo getnonfreefonts-sys garamond
-
+```
+sudo getnonfreefonts-sys garamond
+```
   or
+```
+sudo getnonfreefonts --sys garamond
+```
 
-    $ sudo getnonfreefonts --sys garamond
-
-Then use `template.tex`.
+- Then use `template.tex`.
 
 ### What it looks like
 
