@@ -1,31 +1,39 @@
 % https://tex.stackexchange.com/questions/59932/reproducing-an-official-letterhead
 
 % Colors
-\usepackage[dvinames]{xcolor}
+% blue:   CMYK 100/90/10/77
+% orange: CMYK 01/83/85/0
+%\usepackage[cmyk]{xcolor}
+%\definecolor{UIblue}{cmyk}{1.00, 0.90, 0.10, 0.77}
+%\definecolor{UIorange}{cmyk}{0.01, 0.83, 0.85, 0.00}
+\usepackage[rgb]{xcolor}
 \definecolor{UIblue}{RGB}{19,41,75}
 \definecolor{UIorange}{RGB}{232,74,39}
-
-% logo
-%\providecommand\logofile{imark_1867_bw}
-\providecommand\logofile{imark}
 
 % set page geometry
 \usepackage[top=2in,left=1.0in,bottom=0.5in,right=1.0in]{geometry}
 \usepackage{graphicx}
 
+% logo
+\providecommand\logofile{Illinois-Wordmark-Horizontal-Full-Color-CMYK.pdf}
+
 % remove coloring from URLs
 \usepackage[colorlinks=false,pdfborder={0 0 0}]{hyperref}
+\urlstyle{same}
 
+% to place things in exact places
 %\usepackage[absolute,showboxes]{textpos}
 \usepackage[absolute]{textpos}
-\setlength{\TPHorizModule}{\paperwidth}\setlength{\TPVertModule}{\paperheight}
+
+% for conditionals
 \usepackage{ifthen}
 
-% Use the Garamond URW font if available
-\IfFileExists{mathdesign.sty}{%
-  \usepackage[urw-garamond]{mathdesign}
-}{}
+% load Montserrat font -- this is a close alternative to Gotham
+\usepackage[defaultfam,light,tabular,lining]{montserrat} %% Option 'defaultfam'
+%% only if the base font of the document is to be sans serig
 \usepackage[T1]{fontenc}
+\renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
+
 \linespread{1.10}
 
 % use microtype to extend spacing
@@ -33,7 +41,6 @@
 
 % Remove paragraph indentation
 \parindent0pt
-\setlength{\parskip}{0.8\baselineskip}
 \raggedright%
 
 % change page style to include header/footer
@@ -42,35 +49,52 @@
 % add stuff to the doc
 \AtBeginDocument{%
     % Top block with logo
-    \begin{textblock*}{\textwidth}[0,0](1.0in,0.5in)
-    {
-      \color{UIblue}
-      \centerline{\fontsize{17}{0.5in}\selectfont\textls[150]{\textsc{University of Illinois}}}
-      \setlength{\baselineskip}{0.25in}
-      \centerline{\fontsize{13}{0.5in}\selectfont\textls[150]{\textsc{at Urbana-Champaign}}}
-      \setlength{\baselineskip}{0.5in}
-    }
-      \begin{center}
-        \includegraphics[height=0.5in]{\logofile}
-      \end{center}
+    \begin{textblock*}{\textwidth}(0.75in,0.75in)
+      \includegraphics[height=0.3125in]{\logofile}
     \end{textblock*}
+
     % Inset department address
-    \begin{textblock*}{4.0in}(1.0in,1.2in)
-        {\fontsize{9}{10.8}\selectfont
+    \begin{textblock*}{4.0in}(0.75in,1.65625in)
+        {%
+         % use medium bold here
         \color{UIblue}
-        \fromdept%
+        \fontsize{10}{12}\selectfont
+        \fontseries{mb}\selectfont
+        \fromdept\\%
+        }
+        \vspace{2mm}
+        {%
+        \color{UIblue}
+        \footnotesize\par
+        %\fontsize{9}{10}\selectfont
+        \fromdeptaddress%
         }
     \end{textblock*}
+
     % footer
-    \begin{textblock*}{\paperwidth}[0,1](0.0in,10.5in)
-      \centering
-    {\fontsize{9}{0}\selectfont\color{UIblue}
-     \textit{telephone} \fromtel\ \textbullet\
-     \textit{web} \fromweb\ \textbullet\
-     \textit{email} \fromemail}
-     \color{black}
+    % specify the top right corner location of the footer
+    \begin{textblock*}{\textwidth}[1.0,0.0](7.75in,9.9375in)
+        {%
+         \begin{flushright}
+         \color{UIorange}
+         \fontseries{mb}\selectfont
+         UNIVERSITY OF ILLINOIS AT URBANA-CHAMPAIGN
+         \end{flushright}
+        }
+        \vspace{-5mm}
+        {%
+         \begin{flushright}
+         \color{UIblue}
+         \fontsize{9}{11}\selectfont
+         \fromtel\ \textbullet\
+         \fromemail\ \textbullet\
+         \fromweb%
+         \end{flushright}
+        }
     \end{textblock*}
-    \newgeometry{top=2in,left=1.0in,bottom=1.2in,right=1.0in}
+
+    % main text
+    \newgeometry{top=3.0in,left=0.75in,bottom=1.2in,right=1.0in}
   }
 
 % add closing to end of the document, if sig is available
