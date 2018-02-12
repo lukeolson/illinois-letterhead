@@ -1,27 +1,12 @@
 ### What is this
 
-This is an attempt to reproduce the Illinois letterhead in latex.  This will be updated when new guidelines are set.
+This is an attempt to reproduce the Illinois letterhead in latex.  This uses the new brand, the [block-I](http://creativeservices.illinois.edu/brand/).
 
 ### How to use
 
-First install the Garamond URW fonts:
+The official letterhead appears to use the [Gotham](https://www.typography.com/fonts/gotham/overview/) font.  A close, available alternative is is the [Montserrat](https://ctan.org/tex-archive/fonts/montserrat?lang=en) font, which is used here and is included in TexLive.
 
-```[bash]
-# For the garamond font, first download this script
-wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
-# Then install a script (!)
-sudo texlua install-getnonfreefonts
-# Then install the font
-sudo getnonfreefonts-sys garamond
-```
-
-or if the last line fails:
-
-```[bash]
-sudo getnonfreefonts --sys garamond
-```
-
-Then use `template.tex`.
+Use `template.tex`, it includes the logo and font style through `illinois.tex`.
 
 ### What it looks like
 
