@@ -11,7 +11,7 @@
 \definecolor{UIorange}{RGB}{232,74,39}
 
 % set page geometry
-\usepackage[top=2in,left=1.0in,bottom=0.5in,right=1.0in]{geometry}
+\usepackage[top=1in,left=0.75in,bottom=1.2in,right=1.0in]{geometry}
 \usepackage{graphicx}
 
 % logo
@@ -33,7 +33,9 @@
 %% only if the base font of the document is to be sans serif
 \usepackage[T1]{fontenc}
 
+% set linespacing and paragraph spacing
 \linespread{1.10}
+\setlength{\parskip}{1em}
 
 % use microtype to extend spacing
 \usepackage{microtype}
@@ -48,7 +50,7 @@
 % add stuff to the doc
 \AtBeginDocument{%
     % Top block with logo
-    \begin{textblock*}{\textwidth} (0.75in,0.75in)
+    \begin{textblock*}{\textwidth}(0.75in,0.75in)
       \includegraphics[height=0.3125in]{\logofile}
     \end{textblock*}
 
@@ -72,7 +74,7 @@
 
     % footer
     % specify the top right corner location of the footer
-    \begin{textblock*}{\textwidth}[1.0,0.0] (7.75in,9.9375in)
+    \begin{textblock*}{\textwidth}[1.0,0.0](7.75in,9.9375in)
         {%
          \begin{flushright}
          \color{UIorange}
@@ -93,7 +95,7 @@
     \end{textblock*}
 
     % main text
-    \newgeometry{top=3.0in,left=0.75in,bottom=1.2in,right=1.0in}
+    %\newgeometry{top=3.0in,left=0.75in,bottom=1.2in,right=1.0in}
   }
 
 % add closing to end of the document, if sig is available
