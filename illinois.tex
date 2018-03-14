@@ -72,6 +72,17 @@
         }
     \end{textblock*}
 
+    % main text
+    %\newgeometry{top=3.0in,left=0.75in,bottom=1.2in,right=1.0in}
+    \vspace*{-1in}
+  }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot{}
+\fancyfoot[L]{%
     % footer
     % specify the top right corner location of the footer
     \begin{textblock*}{\textwidth}[1.0,0.0](7.75in,9.9375in)
@@ -93,10 +104,10 @@
          \end{flushright}
         }
     \end{textblock*}
+    }
 
-    % main text
-    %\newgeometry{top=3.0in,left=0.75in,bottom=1.2in,right=1.0in}
-  }
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
 
 % add closing to end of the document, if sig is available
 \AtEndDocument{%
