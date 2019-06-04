@@ -11,19 +11,22 @@
 \definecolor{UIorange}{RGB}{232,74,39}
 
 % set page geometry
-\usepackage[top=1in,left=0.75in,bottom=1.2in,right=1.0in]{geometry}
+\usepackage[top=1in,left=1.0in,bottom=1.0in,right=1.0in]{geometry}
 \usepackage{graphicx}
 
 % logo
-\providecommand\logofile{Illinois-Wordmark-Horizontal-Full-Color-CMYK.pdf}
+\providecommand\fulllogofile{Illinois-Wordmark-Horizontal-Full-Color-CMYK.pdf}
+\providecommand\logofile{Illinois-Logo-Full-Color-CMYK.pdf}
 
 % remove coloring from URLs
 \usepackage[colorlinks=false,pdfborder={0 0 0}]{hyperref}
 \urlstyle{same}
 
 % to place things in exact places
-\usepackage[absolute,showboxes]{textpos}
-%\usepackage[absolute]{textpos}
+%\usepackage[absolute,showboxes]{textpos}
+% set up a grid to view spacing
+%\usepackage[top-left,step=0.05in]{pagegrid}
+\usepackage[absolute]{textpos}
 
 % for conditionals
 \usepackage{ifthen}
@@ -47,54 +50,58 @@
 % change page style to include header/footer
 \pagestyle{empty}
 
-%% to add image alignment in includegreaphics
-%\usepackage{graphbox}
+\newif\ifdebug%
 
-% optional, set up a grid to view spacing
-%\usepackage[top-left,step=0.05in]{pagegrid}
-\usepackage{tikz}
-\usetikzlibrary{calc}
-\newcommand{\drawlayout}{%
-\begin{tikzpicture}[remember picture,overlay]
-  \coordinate (m1) at (current page.north west);
-  \coordinate (m2) at (current page.north east);
+\debugtrue%
+%\debugfalse%
 
-  % top left
-  \draw[|-|,blue,thick] ($(m1)+(1.05in,0)$) -- ++(0, -0.75in)
-                        node [midway,fill=white] {0.75"};
-  \draw[|-|,blue,thick] ($(m1)+(0,-0.8in)$) -- ++(1.0in, 0)
-                        node [midway,fill=white] {1.0"};
-  % top right
-  \draw[|-|,blue,thick] ($(m2)+(-1.05in,0)$) -- ++(0, -0.75in)
-                        node [midway,fill=white] {0.75"};
-  \draw[|-|,blue,thick] ($(m2)+(0,-0.8in)$) -- ++(-1.0in, 0)
-                        node [midway,fill=white] {1.0"};
-  % top middle
-  \draw[dotted,blue,thick] ($(m1)+(4.015in,0)$) -- ++(0, -2.0in);
-  \draw[|-|,blue,thick] ($(m1)+(4.015in,-1.0in)$) -- ++(-1.0in, 0)
-                        node [midway,fill=white] {1.0"};
+\ifdebug%
+  \usepackage{tikz}
+  \usetikzlibrary{calc}
+  \newcommand{\drawlayout}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \coordinate (m1) at (current page.north west);
+    \coordinate (m2) at (current page.north east);
 
-  % blue block I
-  \coordinate (m3) at (current page.north east);
-  \coordinate (m4) at ($(m3)+(-1.5in,-1.65in)$);
-  \draw[solid,blue!30,fill=blue!10,thick] (m4) -- +(0.25in,0) -- +(0.25in,-0.35in) -- +(0,-0.35in) -- cycle;
+    % top left
+    \draw[|-|,blue,thick] ($(m1)+(1.05in,0)$) -- ++(0, -0.75in)
+                          node [midway,fill=white] {0.75"};
+    \draw[|-|,blue,thick] ($(m1)+(0,-0.8in)$) -- ++(1.0in, 0)
+                          node [midway,fill=white] {1.0"};
+    % top right
+    \draw[|-|,blue,thick] ($(m2)+(-1.05in,0)$) -- ++(0, -0.75in)
+                          node [midway,fill=white] {0.75"};
+    \draw[|-|,blue,thick] ($(m2)+(0,-0.8in)$) -- ++(-1.0in, 0)
+                          node [midway,fill=white] {1.0"};
+    % top middle
+    \draw[dotted,blue,thick] ($(m1)+(4.015in,0)$) -- ++(0, -2.0in);
+    \draw[|-|,blue,thick] ($(m1)+(4.015in,-1.0in)$) -- ++(-1.0in, 0)
+                          node [midway,fill=white] {1.0"};
 
-  % text
-  \draw[red,thick] ($(m1)+(1.0in,-2.00in)$) -- +(6.5in,0) -- +(6.5in,-8in) -- +(0,-8in) -- cycle;
+    % blue block I
+    \coordinate (m3) at (current page.north east);
+    \coordinate (m4) at ($(m3)+(-1.5in,-1.65in)$);
+    \draw[solid,blue!30,fill=blue!10,thick] (m4) -- +(0.25in,0) -- +(0.25in,-0.35in) -- +(0,-0.35in) -- cycle;
 
-  % bottom
-  \coordinate (m5) at (current page.south west);
-  \draw[|-|,blue,thick] ($(m5)+(6.0in,0)$) -- ++(0, 1.00in)
-                        node [midway,fill=white] {1.00"};
-\end{tikzpicture}
-}
+    % text
+    \draw[red,thick] ($(m1)+(1.0in,-2.00in)$) -- +(6.5in,0) -- +(6.5in,-8in) -- +(0,-8in) -- cycle;
+
+    % bottom
+    \coordinate (m5) at (current page.south west);
+    \draw[|-|,blue,thick] ($(m5)+(6.0in,0)$) -- ++(0, 1.00in)
+                          node [midway,fill=white] {1.00"};
+  \end{tikzpicture}
+  }
+\else
+  \newcommand{\drawlayout}{ }
+\fi
 
 % add stuff to the doc
 \AtBeginDocument{%
     % Top block with logo
     \begin{textblock*}{3in} (1.0in,0.75in)
       \setlength{\parskip}{0pt}
-      \includegraphics[height=0.35in]{\logofile}
+      \includegraphics[height=0.35in]{\fulllogofile}
     \end{textblock*}
 
     % Inset department address
@@ -119,8 +126,8 @@
     \end{textblock*}
 
     % main text
-    \newgeometry{top=2.00in,left=1.0in,bottom=1.0in,right=1.0in}
-    %\vspace*{1.3in}
+    %\newgeometry{top=2.00in,left=1.0in,bottom=1.0in,right=1.0in}
+    \vspace*{0.75in}
     \drawlayout%
   }
 
@@ -148,6 +155,17 @@
         }
     \end{textblock*}
     }
+\fancyfoot[R]{
+\ifnum\thepage=1
+\else
+  \begin{textblock*}{1in} (6.5in,10.25in)
+    \setlength{\parskip}{0pt}
+    \setlength{\parskip}{-\baselineskip}
+    \flushright%
+    \includegraphics[height=0.35in]{\logofile}
+  \end{textblock*}
+\fi
+}
 
 \fancyhead{}
 \renewcommand{\headrulewidth}{0pt}
