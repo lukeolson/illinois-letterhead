@@ -20,4 +20,6 @@ Start with `template.tex` and modify the preamble at the top, it includes the lo
 
 You can see details of the formatting by uncommenting `\debugtrue` instead of `\debugfalse`.  Setting this shows the measurements similar to [here](https://creativeservices.illinois.edu/brand/pdf/stationery/letterhead.pdf).
 
-![example](./example-layout.png "example")
+![example](./example-layout-0.png "example")
+![example](./example-layout-1.png "example")
+![example](./example-layout-2.png "example")
