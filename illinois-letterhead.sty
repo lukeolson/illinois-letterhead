@@ -19,6 +19,15 @@
 \DeclareOption*{\PackageWarning{illinois-letterhead}{Unknown option `\CurrentOption`}}
 \ProcessOptions\relax
 
+\DeclareRobustCommand{\fromdept}[1]{\DeclareRobustCommand\@fromdept{#1}}
+\DeclareRobustCommand{\fromdeptaddress}[1]{\DeclareRobustCommand\@fromdeptaddress{#1}}
+\DeclareRobustCommand{\fromtel}[1]{\DeclareRobustCommand\@fromtel{#1}}
+\DeclareRobustCommand{\fromemail}[1]{\DeclareRobustCommand\@fromemail{#1}}
+\DeclareRobustCommand{\fromweb}[1]{\DeclareRobustCommand\@fromweb{#1}}
+\DeclareRobustCommand{\fromname}[1]{\DeclareRobustCommand\@fromname{#1}}
+\DeclareRobustCommand{\closing}[1]{\DeclareRobustCommand\@closing{#1}}
+\newcommand{\signaturefile}[1]{\def\@signaturefile{#1}}
+
 % Colors
 % blue:   CMYK 100/90/10/77
 % orange: CMYK 01/83/85/0
@@ -128,14 +137,14 @@
         \color{UIblue}
         \fontsize{10}{12}\selectfont
         \fontseries{mb}\selectfont
-        \fromdept\\%
+        \@fromdept\\%
         }
         \vspace{2mm}
         {%
         \color{UIblue}
         \footnotesize\par
         %\fontsize{9}{10}\selectfont
-        \fromdeptaddress%
+        \@fromdeptaddress%
         }
     \end{textblock*}
 
@@ -163,9 +172,9 @@
         {%
          \color{UIblue}
          \fontsize{9}{11}\selectfont
-         \fromtel\ \textbullet\
-         \fromemail\ \textbullet\
-         \fromweb%
+         \@fromtel\ \textbullet\
+         \@fromemail\ \textbullet\
+         \@fromweb%
         }
     \end{textblock*}
     }
@@ -187,11 +196,11 @@
 % add closing to end of the document, if sig is available
 \AtEndDocument{%
     \par\vspace{2ex}
-    \closing,
+    \@closing,
 
-    \ifthenelse{\equal{\signaturefile}{}}{\bigskip\bigskip}{\includegraphics[width=1.2in]{\signaturefile}\\[-0.2\baselineskip]}
+    \ifthenelse{\equal{\@signaturefile}{}}{\bigskip\bigskip}{\includegraphics[width=1.2in]{\@signaturefile}\\[-0.2\baselineskip]}
 
-    \fromname%
+    \@fromname%
 }
 
 \endinput
