@@ -2,9 +2,9 @@
 
 This is an attempt to reproduce the Illinois letterhead in Latex.  This uses the new brand, the [block-I](http://creativeservices.illinois.edu/brand/).
 
-If you are looking for the *old* I-mark style, you can find it in `imark` branch [here](https://github.com/lukeolson/illinois-letterhead/tree/imark).
-
 This the *space-saving* format outline [here](https://creativeservices.illinois.edu/brand/pdf/stationery/letterhead.pdf).
+
+If you are looking for the *old* I-mark style, you can find it in `imark` branch [here](https://github.com/lukeolson/illinois-letterhead/tree/imark).  There is also an original version of this template in the `blocki-basic` branch [here](https://github.com/lukeolson/illinois-letterhead/tree/blocki-basic).
 
 ### How to use
 
