@@ -13,6 +13,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{illinois-letterhead}[2019/06/05 v0.1 Illinois Letterhead]
 
+% options
+\newif\ifillinoisletterhead@layoutoption\illinoisletterhead@layoutoptionfalse
+\DeclareOption{layout}{\illinoisletterhead@layoutoptiontrue}
+\DeclareOption*{\PackageWarning{illinois-letterhead}{Unknown option `\CurrentOption`}}
+\ProcessOptions\relax
+
 % Colors
 % blue:   CMYK 100/90/10/77
 % orange: CMYK 01/83/85/0
@@ -63,12 +69,7 @@
 % change page style to include header/footer
 \pagestyle{empty}
 
-\newif\ifdebug%
-
-%\debugtrue%
-\debugfalse%
-
-\ifdebug%
+\ifillinoisletterhead@layoutoption%
   \RequirePackage{tikz}
   \usetikzlibrary{calc}
   \newcommand{\drawlayout}{%
