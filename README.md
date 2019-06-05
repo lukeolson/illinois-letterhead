@@ -8,13 +8,33 @@ If you are looking for the *old* I-mark style, you can find it in `imark` branch
 
 ## How to use
 
+```
+\usepackage{illinois-letterhead}
+
+\fromdept{THE GRAINGER COLLEGE OF ENGINEERING}
+\fromdeptaddress{Department of Computer Science\\Siebel Center for Computer Science\\201 North Goodwin Avenue\\Urbana, IL 61801--2302 USA\\}
+
+\fromtel{217.244.5555}
+\fromemail{\href{mailto:netid@illinois.edu}{netid@illinois.edu}}
+\fromweb{\href{http://netid.cs.illinois.edu}{netid.cs.illinois.edu}}
+
+\closing{Sincerely}
+\signaturefile{sig.png}
+\fromname{Dr.\ Such and Such\\Professor}
+```
+
 The official letterhead appears to use the [Gotham](https://www.typography.com/fonts/gotham/overview/) font.  A close available alternative is the [Montserrat](https://ctan.org/tex-archive/fonts/montserrat?lang=en) font, which is used here and is included in TexLive.
 
-Start with `template.tex` and modify the preamble at the top, it includes the logo and font style through `illinois.tex`.
+One option is to start with `template.tex` and modify the preamble at the top. The logo and font style are set in `illinois-letterhead.sty`.
 
-1. `cp template.tex myletter.tex`
-2. write the letter
-3. `pdflatex myletter.tex`
+1. `cd somedir`
+1. `ln -s pathto/illinois-letterhead.sty`
+1. `ln -s pathto/Illinois-Logo-Full-Color-CMYK.pdf`
+1. `ln -s pathto/Illinois-Wordmark-Horizontal-Full-Color-CMYK.pdf`
+1. `ln -s pathto/sig.png`
+1. `cp pathto/template.tex myletter.tex`
+1. change the addres; write the letter
+1. `pdflatex myletter.tex`
 
 ## What it looks like
 
