@@ -14,6 +14,8 @@ Start with `template.tex` and modify the preamble at the top, it includes the lo
 
 ### What it looks like
 
+[full pdf](./example.pdf)
+
 ![example](./example.png "example")
 
 ### Details
