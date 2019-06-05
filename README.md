@@ -4,8 +4,6 @@ This is an attempt to reproduce the Illinois letterhead in Latex.  This uses the
 
 This the *space-saving* format outline [here](https://creativeservices.illinois.edu/brand/pdf/stationery/letterhead.pdf).
 
-If you are looking for the *old* I-mark style, you can find it in `imark` branch [here](https://github.com/lukeolson/illinois-letterhead/tree/imark).  There is also an original version of this template in the `blocki-basic` branch [here](https://github.com/lukeolson/illinois-letterhead/tree/blocki-basic).
-
 ## How to use
 
 ```
@@ -49,3 +47,9 @@ You can see details of the formatting by uncommenting `\debugtrue` instead of `\
 ![example](./example/example-layout-0.png "example")
 ![example](./example/example-layout-1.png "example")
 ![example](./example/example-layout-2.png "example")
+
+## Other versions (not maintained)
+
+- [`imark` branch](https://github.com/lukeolson/illinois-letterhead/tree/imark): This is the *old* I-mark style.
+- [`blocki-basic` branch](https://github.com/lukeolson/illinois-letterhead/tree/blocki-basic): This is this is the non space-saving original version of this template in the block-I format.
+- [`blocki-nonpackage` branch](https://github.com/lukeolson/illinois-letterhead/tree/blocki-nonpackage): This branch uses `\input{}` instead of `\usepackage{}`
