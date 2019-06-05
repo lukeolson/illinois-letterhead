@@ -1,47 +1,60 @@
+% This package reproduces the Illinois letterhead following the
+% guidelines:
+% https://creativeservices.illinois.edu/brand/pdf/stationery/letterhead.pdf
+%
+% Usage:
+% \usepackage[layout]{illinois-letterhead}
+%
+%   layout - highlights the layout
+%
+% References:
 % https://tex.stackexchange.com/questions/59932/reproducing-an-official-letterhead
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{illinois-letterhead}[2019/06/05 v0.1 Illinois Letterhead]
 
 % Colors
 % blue:   CMYK 100/90/10/77
 % orange: CMYK 01/83/85/0
-%\usepackage[cmyk]{xcolor}
+%\RequirePackage[cmyk]{xcolor}
 %\definecolor{UIblue}{cmyk}{1.00, 0.90, 0.10, 0.77}
 %\definecolor{UIorange}{cmyk}{0.01, 0.83, 0.85, 0.00}
-\usepackage[rgb]{xcolor}
+\RequirePackage[rgb]{xcolor}
 \definecolor{UIblue}{RGB}{19,41,75}
 \definecolor{UIorange}{RGB}{232,74,39}
 
 % set page geometry
-\usepackage[top=1in,left=1.0in,bottom=1.0in,right=1.0in]{geometry}
-\usepackage{graphicx}
+\RequirePackage[top=1in,left=1.0in,bottom=1.0in,right=1.0in]{geometry}
+\RequirePackage{graphicx}
 
 % logo
 \providecommand\fulllogofile{Illinois-Wordmark-Horizontal-Full-Color-CMYK.pdf}
 \providecommand\logofile{Illinois-Logo-Full-Color-CMYK.pdf}
 
 % remove coloring from URLs
-\usepackage[colorlinks=false,pdfborder={0 0 0}]{hyperref}
+\RequirePackage[colorlinks=false,pdfborder={0 0 0}]{hyperref}
 \urlstyle{same}
 
 % to place things in exact places
-%\usepackage[absolute,showboxes]{textpos}
+%\RequirePackage[absolute,showboxes]{textpos}
 % set up a grid to view spacing
-%\usepackage[top-left,step=0.05in]{pagegrid}
-\usepackage[absolute]{textpos}
+%\RequirePackage[top-left,step=0.05in]{pagegrid}
+\RequirePackage[absolute]{textpos}
 
 % for conditionals
-\usepackage{ifthen}
+\RequirePackage{ifthen}
 
 % load Montserrat font -- this is a close alternative to Gotham
-\usepackage[defaultfam,light,tabular,lining]{montserrat} %% Option 'defaultfam'
+\RequirePackage[defaultfam,light,tabular,lining]{montserrat} %% Option 'defaultfam'
 %% only if the base font of the document is to be sans serif
-\usepackage[T1]{fontenc}
+\RequirePackage[T1]{fontenc}
 
 % set linespacing and paragraph spacing
 \linespread{1.10}
 \setlength{\parskip}{1em}
 
 % use microtype to extend spacing
-\usepackage{microtype}
+\RequirePackage{microtype}
 
 % Remove paragraph indentation
 \parindent0pt
@@ -56,7 +69,7 @@
 \debugfalse%
 
 \ifdebug%
-  \usepackage{tikz}
+  \RequirePackage{tikz}
   \usetikzlibrary{calc}
   \newcommand{\drawlayout}{%
   \begin{tikzpicture}[remember picture,overlay]
@@ -131,7 +144,7 @@
     \drawlayout%
   }
 
-\usepackage{fancyhdr}
+\RequirePackage{fancyhdr}
 \pagestyle{fancy}
 
 \renewcommand{\footrulewidth}{0pt}
@@ -179,3 +192,6 @@
 
     \fromname%
 }
+
+\endinput
+% end of file `illinois-letterhead.sty`
