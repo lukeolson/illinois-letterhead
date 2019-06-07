@@ -18,7 +18,7 @@ Copy (or link) the `illinois-letterhead.sty` and `.pdf` logo files to your worki
 
 ## Details
 
-You can see details of the formatting by uncommenting `\debugtrue` instead of `\debugfalse`.  Setting this shows the measurements similar to [here](https://creativeservices.illinois.edu/brand/pdf/stationery/letterhead.pdf).
+You can see details by using the layout option: `\usepackage[layout]{illinois-letterhead}`.  Setting this shows the measurements similar to [here](https://creativeservices.illinois.edu/brand/pdf/stationery/letterhead.pdf).
 
 ![example](./example/example-layout-0.png "example")
 ![example](./example/example-layout-1.png "example")
