@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
         print(f'-- add {pngname} to table')
         if os.path.exists(pngname):
-            table += f'| {f} | <img src="./{pngname}" width="150"/> |\n'
+            table += f'| {f} | <img src="./{pngname}" width="250"/> |\n'
         else:
             ftmp = f
             for image in sorted(glob.glob(f'{name}-[0-9].png')):
