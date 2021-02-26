@@ -28,6 +28,16 @@
 \DeclareRobustCommand{\closing}[1]{\DeclareRobustCommand\@closing{#1}}
 \newcommand{\signaturefile}[1]{\def\@signaturefile{#1}}
 
+\signaturefile{}
+\fromdept{}
+\fromdept{}
+\fromdeptaddress{}
+\fromtel{}
+\fromemail{}
+\fromweb{}
+\fromname{}
+\closing{}
+
 % Colors
 % blue:   CMYK 100/90/10/77
 % orange: CMYK 01/83/85/0
@@ -37,6 +47,9 @@
 \RequirePackage[rgb]{xcolor}
 \definecolor{UIblue}{RGB}{19,41,75}
 \definecolor{UIorange}{RGB}{232,74,39}
+
+% ifstrempty
+\RequirePackage{etoolbox}
 
 % set page geometry
 \RequirePackage[top=1in,left=1.0in,bottom=1.0in,right=1.0in]{geometry}
@@ -136,7 +149,7 @@
          % use medium bold here
         \color{UIblue}
         \fontsize{10}{12}\selectfont
-        \fontseries{mb}\selectfont
+        \fontseries{semibold}\selectfont
         \@fromdept\\%
         }
         \vspace{2mm}
@@ -165,15 +178,23 @@
     \begin{textblock*}{\textwidth} (1in,10.25in)
         {%
          \color{UIorange}
-         \fontseries{mb}\selectfont
+         \fontseries{semibold}\selectfont
          UNIVERSITY OF ILLINOIS AT URBANA-CHAMPAIGN\\
         }
         \vspace*{0.5em}
         {%
          \color{UIblue}
          \fontsize{9}{11}\selectfont
-         \@fromtel\ \textbullet\
-         \@fromemail\ \textbullet\
+         \sbox0{\@fromtel}%
+         \ifdim\wd0=0pt
+         \else
+            \@fromtel\ \textbullet\
+         \fi
+         \sbox0{\@fromemail}%
+         \ifdim\wd0=0pt
+         \else
+            \@fromemail\ \textbullet\
+         \fi
          \@fromweb%
         }
     \end{textblock*}
@@ -196,7 +217,11 @@
 % add closing to end of the document, if sig is available
 \AtEndDocument{%
     \par\vspace{2ex}
-    \@closing,
+    \sbox0{\@closing}%
+    \ifdim\wd0=0pt
+    \else
+       \@closing,
+    \fi
 
     \ifthenelse{\equal{\@signaturefile}{}}{\bigskip\bigskip}{\includegraphics[width=1.2in]{\@signaturefile}\\[-0.2\baselineskip]}
 
