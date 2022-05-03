@@ -1,6 +1,4 @@
-% This package reproduces the Illinois letterhead following the
-% guidelines:
-% https://creativeservices.illinois.edu/brand/pdf/stationery/letterhead.pdf
+% This package reproduces the Illinois letterhead
 %
 % Usage:
 % \usepackage[layout]{illinois-letterhead}
@@ -11,7 +9,7 @@
 % https://tex.stackexchange.com/questions/59932/reproducing-an-official-letterhead
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{illinois-letterhead}[2019/06/05 v0.1 Illinois Letterhead]
+\ProvidesPackage{illinois-letterhead}[2022/05/03 v0.2 Illinois Letterhead]
 
 % options
 \newif\ifillinoisletterhead@layoutoption\illinoisletterhead@layoutoptionfalse
@@ -19,24 +17,19 @@
 \DeclareOption*{\PackageWarning{illinois-letterhead}{Unknown option `\CurrentOption`}}
 \ProcessOptions\relax
 
+% header
 \DeclareRobustCommand{\fromdept}[1]{\DeclareRobustCommand\@fromdept{#1}}
 \DeclareRobustCommand{\fromdeptaddress}[1]{\DeclareRobustCommand\@fromdeptaddress{#1}}
+
+% footer
 \DeclareRobustCommand{\fromtel}[1]{\DeclareRobustCommand\@fromtel{#1}}
 \DeclareRobustCommand{\fromemail}[1]{\DeclareRobustCommand\@fromemail{#1}}
 \DeclareRobustCommand{\fromweb}[1]{\DeclareRobustCommand\@fromweb{#1}}
+
+% salutation
 \DeclareRobustCommand{\fromname}[1]{\DeclareRobustCommand\@fromname{#1}}
 \DeclareRobustCommand{\closing}[1]{\DeclareRobustCommand\@closing{#1}}
 \newcommand{\signaturefile}[1]{\def\@signaturefile{#1}}
-
-\signaturefile{}
-\fromdept{}
-\fromdept{}
-\fromdeptaddress{}
-\fromtel{}
-\fromemail{}
-\fromweb{}
-\fromname{}
-\closing{}
 
 % Colors
 % blue:   CMYK 100/90/10/77
@@ -48,7 +41,6 @@
 \definecolor{UIblue}{RGB}{19,41,75}
 \definecolor{UIorange}{RGB}{232,74,39}
 
-% ifstrempty
 \RequirePackage{etoolbox}
 
 % set page geometry
@@ -150,14 +142,17 @@
         \color{UIblue}
         \fontsize{10}{12}\selectfont
         \fontseries{semibold}\selectfont
-        \@fromdept\\%
+        \ifdefined\@fromdept
+          \@fromdept\\%
+        \fi
         }
         \vspace{2mm}
         {%
         \color{UIblue}
         \footnotesize\par
-        %\fontsize{9}{10}\selectfont
-        \@fromdeptaddress%
+        \ifdefined\@fromdeptaddress
+          \@fromdeptaddress%
+        \fi
         }
     \end{textblock*}
 
@@ -185,17 +180,21 @@
         {%
          \color{UIblue}
          \fontsize{9}{11}\selectfont
-         \sbox0{\@fromtel}%
-         \ifdim\wd0=0pt
-         \else
-            \@fromtel\ \textbullet\
+         \ifdefined\@fromtel
+            \@fromtel
          \fi
-         \sbox0{\@fromemail}%
-         \ifdim\wd0=0pt
-         \else
-            \@fromemail\ \textbullet\
+         \ifdefined\@fromemail
+            \ifdefined\@fromtel
+              \ \textbullet\ %
+            \fi
+            \@fromemail
          \fi
-         \@fromweb%
+         \ifdefined\@fromweb
+            \ifdefined\@fromemail
+              \ \textbullet\ %
+            \fi
+            \@fromweb
+         \fi
         }
     \end{textblock*}
     }
@@ -217,15 +216,20 @@
 % add closing to end of the document, if sig is available
 \AtEndDocument{%
     \par\vspace{2ex}
-    \sbox0{\@closing}%
-    \ifdim\wd0=0pt
-    \else
+    \ifdefined\@closing
        \@closing,
     \fi
 
-    \ifthenelse{\equal{\@signaturefile}{}}{\bigskip\bigskip}{\includegraphics[width=1.2in]{\@signaturefile}\\[-0.2\baselineskip]}
+    \ifdefined\@signaturefile
+      \includegraphics[width=1.2in]{\@signaturefile}\\[-0.2\baselineskip]
+    \else
+      \bigskip
+      \bigskip
+    \fi
 
-    \@fromname%
+    \ifdefined\@fromname
+      \@fromname%
+    \fi
 }
 
 \endinput
