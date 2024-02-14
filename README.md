@@ -4,7 +4,7 @@ This is an attempt to reproduce the Illinois letterhead in Latex using the new b
 
 The official [typogrophy] recommendation is the
 [Montserrat](https://ctan.org/tex-archive/fonts/montserrat?lang=en) font,  used
-here and included in TexLive.  The main text defaults to Latin Modern Roman,
+here and included in TexLive.  The main text defaults to Montserrat,
 but the body can be easily changed.
 
 ## How to use
