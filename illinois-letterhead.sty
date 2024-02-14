@@ -65,8 +65,9 @@
 \RequirePackage{ifthen}
 
 % load Montserrat font -- this is a close alternative to Gotham
-\RequirePackage[defaultfam,light,tabular,lining]{montserrat} %% Option 'defaultfam'
+%\RequirePackage[defaultfam,light,tabular,lining]{montserrat} %% Option 'defaultfam'
 %% only if the base font of the document is to be sans serif
+\RequirePackage[light,tabular,lining]{montserrat}
 \RequirePackage[T1]{fontenc}
 
 % set linespacing and paragraph spacing
@@ -134,6 +135,7 @@
 
     % Inset department address
     \begin{textblock*}{4.0in} (3.5in,0.75in)
+        \fontfamily{Montserrat-LF}
         \setlength{\parskip}{-\baselineskip}
         \flushright%
         \vspace{1mm}
@@ -172,12 +174,14 @@
     % specify the top left corner location of the footer
     \begin{textblock*}{\textwidth} (1in,10.25in)
         {%
+         \fontfamily{Montserrat-LF}
          \color{UIorange}
          \fontseries{semibold}\selectfont
          UNIVERSITY OF ILLINOIS AT URBANA-CHAMPAIGN\\
         }
         \vspace*{0.5em}
         {%
+         \fontfamily{Montserrat-LF}
          \color{UIblue}
          \fontsize{9}{11}\selectfont
          \ifdefined\@fromtel
@@ -185,13 +189,13 @@
          \fi
          \ifdefined\@fromemail
             \ifdefined\@fromtel
-              \ \textbullet\ %
+            \quad \textbullet\quad %
             \fi
             \@fromemail
          \fi
          \ifdefined\@fromweb
             \ifdefined\@fromemail
-              \ \textbullet\ %
+            \quad \textbullet\quad %
             \fi
             \@fromweb
          \fi
@@ -217,7 +221,7 @@
 \AtEndDocument{%
     \par\vspace{2ex}
     \ifdefined\@closing
-       \@closing,
+       \@closing
     \fi
 
     \ifdefined\@signaturefile

@@ -2,7 +2,10 @@
 
 This is an attempt to reproduce the Illinois letterhead in Latex using the new brand, the [block-I](https://marketing.illinois.edu/design/logo).
 
-The official letterhead appears to use the [Gotham](https://www.typography.com/fonts/gotham/overview/) font.  A close available alternative is the [Montserrat](https://ctan.org/tex-archive/fonts/montserrat?lang=en) font,  used here and included in TexLive.
+The official [typogrophy] recommendation is the
+[Montserrat](https://ctan.org/tex-archive/fonts/montserrat?lang=en) font,  used
+here and included in TexLive.  The main text defaults to Latin Modern Roman,
+but the body can be easily changed.
 
 ## How to use
 
@@ -20,6 +23,26 @@ The following commands are optional:
 | `\fromname{<text>}`          | From name (closing)                       |
 | `\closing{<text>}`           | Closing text (e.g. `Sincerely,`, closing) |
 | `\signaturefile{<filename>}` | Signature file (closing)                  |
+
+### How to use, writing many letters
+
+Script [startletter.sh](./startletter.sh) is simple script that can create a directory
+for each letter. For example,
+```bash
+./startletter.sh some_topic_2024
+```
+will create
+```
+some_topic_2024
+├── illinois-letterhead.sty
+├── Illinois-Logo-Full-Color-CMYK.pdf
+├── Illinois-Wordmark-Horizontal-Full-Color-CMYK.pdf
+├── sig.png
+└── some_topic_2024.tex
+```
+
+Each letter is then self-contained to a directory.
+Replace `sig.png` and/or modify the script.
 
 
 ## What it looks like
