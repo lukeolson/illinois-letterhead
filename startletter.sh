@@ -22,6 +22,8 @@ fi
 
 # copy files to "topic"
 path=$(pwd)
+echo "Copying files from $path"
+echo " -> $topic"
 files=(
     "illinois-letterhead.sty"
     "Illinois-Logo-Full-Color-CMYK.pdf"
@@ -36,3 +38,5 @@ done
 # copy template to "topic.tex"
 file="template.tex"
 cp -n "${path}/${file}" "${topic}/${topic}.tex";
+
+echo "done."
