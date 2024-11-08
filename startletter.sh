@@ -28,7 +28,7 @@ files=(
     "illinois-letterhead.sty"
     "Illinois-Logo-Full-Color-CMYK.pdf"
     "Illinois-Wordmark-Horizontal-Full-Color-CMYK.pdf"
-    "sig.png"
+    "mysig.pdf"
 )
 for file in "${files[@]}"; do
     # copy, with no-clobber
@@ -36,7 +36,7 @@ for file in "${files[@]}"; do
 done
 
 # copy template to "topic.tex"
-file="template.tex"
+file="mytemplate.tex"
 cp -n "${path}/${file}" "${topic}/${topic}.tex";
 
 echo "done."

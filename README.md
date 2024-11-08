@@ -37,13 +37,12 @@ some_topic_2024
 ├── illinois-letterhead.sty
 ├── Illinois-Logo-Full-Color-CMYK.pdf
 ├── Illinois-Wordmark-Horizontal-Full-Color-CMYK.pdf
-├── sig.png
+├── mysig.pdf
 └── some_topic_2024.tex
 ```
 
 Each letter is then self-contained to a directory.
-Replace `sig.png` and/or modify the script.
-
+The script will use `mytemplate.tex` and `mysig.pdf` as a default.  Copy the template and a signature file to start.
 
 ## What it looks like
 
