@@ -2,7 +2,7 @@
 
 This is an attempt to reproduce the Illinois letterhead in Latex using the new brand, the [block-I](https://marketing.illinois.edu/design/logo).
 
-The official [typogrophy] recommendation is the
+The official [typogrophy](https://brand.illinois.edu/visual-identity/typography) recommendation is the
 [Montserrat](https://ctan.org/tex-archive/fonts/montserrat?lang=en) font,  used
 here and included in TexLive.  The main text defaults to Montserrat,
 but the body can be easily changed.
