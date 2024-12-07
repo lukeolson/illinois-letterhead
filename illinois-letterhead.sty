@@ -42,6 +42,8 @@
 \definecolor{UIorange}{RGB}{232,74,39}
 
 \RequirePackage{etoolbox}
+\RequirePackage[lining]{sourcesanspro}
+\RequirePackage{setspace}
 
 % set page geometry
 \RequirePackage[top=1in,left=1.0in,bottom=1.0in,right=1.0in]{geometry}
@@ -135,7 +137,7 @@
 
 	% Inset department address
 	\begin{textblock*}{4.0in} (3.5in,0.75in)
-		\fontfamily{Montserrat-LF}
+		\fontfamily{SourceSansPro-LF}
 		\setlength{\parskip}{-\baselineskip}
 		\flushright%
 		\vspace{1mm}
@@ -165,6 +167,7 @@
 }
 
 \RequirePackage{fancyhdr}
+\RequirePackage{microtype}
 \pagestyle{fancy}
 
 \renewcommand{\footrulewidth}{0pt}
@@ -174,14 +177,14 @@
 	% specify the top left corner location of the footer
 	\begin{textblock*}{\textwidth} (1in,10.25in)
 		{%
-				\fontfamily{Montserrat-LF}
+				\fontfamily{SourceSansPro-LF}
 				\color{UIorange}
-				\fontseries{semibold}\selectfont
-				UNIVERSITY OF ILLINOIS AT URBANA-CHAMPAIGN\\
+				\fontseries{eb}\selectfont
+				\textls[120]{UNIVERSITY OF ILLINOIS URBANA-CHAMPAIGN}\\
 			}
 		\vspace*{0.5em}
 		{%
-			\fontfamily{Montserrat-LF}
+			\fontfamily{SourceSansPro-LF}
 			\color{UIblue}
 			\fontsize{9}{11}\selectfont
 			\ifdefined\@fromtel
@@ -189,13 +192,13 @@
 			\fi
 			\ifdefined\@fromemail
 				\ifdefined\@fromtel
-					\quad \textbullet\quad %
+					\, \textbullet\, %
 				\fi
 				\@fromemail
 			\fi
 			\ifdefined\@fromweb
 				\ifdefined\@fromemail
-					\quad \textbullet\quad %
+					\, \textbullet\, %
 				\fi
 				\@fromweb
 			\fi
@@ -225,7 +228,7 @@
 	\fi
 
 	\ifdefined\@signaturefile
-		\includegraphics[width=1.2in]{\@signaturefile}\\[-0.2\baselineskip]
+		\includegraphics[width=1.7in]{\@signaturefile}\\[0.2\baselineskip]
 	\else
 		\bigskip
 		\bigskip

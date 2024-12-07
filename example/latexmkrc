@@ -1,8 +1,0 @@
-# for pdflatex
-$pdf_mode = 1;
-$pdflatex = 'pdflatex -interaction=nonstopmode -shell-escape -halt-on-error -file-line-error';
-
-# for latex
-#$pdf_mode = 2;        # tex -> ps -> pdf
-#$latex = 'latex -interaction=nonstopmode -shell-escape -halt-on-error -file-line-error';
-$clean_ext = "aux loa log toc lof lot bbl blg out ptb xyc cb idx ist ilg ind glo glg gls nlo nls nav snm auxlock brf";
