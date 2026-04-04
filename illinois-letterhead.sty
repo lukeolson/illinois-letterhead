@@ -34,9 +34,6 @@
 % Colors
 % blue:   CMYK 100/90/10/77
 % orange: CMYK 01/83/85/0
-%\RequirePackage[cmyk]{xcolor}
-%\definecolor{UIblue}{cmyk}{1.00, 0.90, 0.10, 0.77}
-%\definecolor{UIorange}{cmyk}{0.01, 0.83, 0.85, 0.00}
 \RequirePackage[rgb]{xcolor}
 \definecolor{UIblue}{RGB}{19,41,75}
 \definecolor{UIorange}{RGB}{232,74,39}
@@ -56,17 +53,12 @@
 \urlstyle{same}
 
 % to place things in exact places
-%\RequirePackage[absolute,showboxes]{textpos}
-% set up a grid to view spacing
-%\RequirePackage[top-left,step=0.05in]{pagegrid}
 \RequirePackage[absolute]{textpos}
 
 % for conditionals
 \RequirePackage{ifthen}
 
 % load Montserrat font -- this is a close alternative to Gotham
-%\RequirePackage[defaultfam,light,tabular,lining]{montserrat} %% Option 'defaultfam'
-%% only if the base font of the document is to be sans serif
 \RequirePackage[light,tabular,lining]{montserrat}
 \RequirePackage[T1]{fontenc}
 
@@ -159,7 +151,6 @@
 	\end{textblock*}
 
 	% main text
-	%\newgeometry{top=2.00in,left=1.0in,bottom=1.0in,right=1.0in}
 	\vspace*{0.75in}
 	\drawlayout%
 }
