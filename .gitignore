@@ -1,4 +1,6 @@
 .DS_Store
+mysig.pdf
+mytemplate.tex
 *.aux
 *.fdb_latexmk
 *.fls
